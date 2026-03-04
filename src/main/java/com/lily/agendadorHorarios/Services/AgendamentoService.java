@@ -13,7 +13,7 @@ public class AgendamentoService {
     private final AgendamentoRepository agendamentoRepository;
 
     public AgendamentoEntity salvarAgendamento(AgendamentoEntity agendamento) {
-        LocalDateTime horaAgendamento = 
+        LocalDateTime horaAgendamento = agendamento.getDataHoraAgendamento()
 
         if (agendamentoRepository.existsById(agendamento.getId())) {
 
