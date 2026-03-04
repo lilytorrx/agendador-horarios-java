@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -15,37 +16,42 @@ import java.util.Objects;
 public class AgendamentoService {
     private final AgendamentoRepository agendamentoRepository;
 
-    public AgendamentoEntity salvarAgendamento(AgendamentoEntity agendamento) {
+    public AgendamentoEntity salvarAgendamento(AgendamentoEntity agendamento){
+
         LocalDateTime horaAgendamento = agendamento.getDataHoraAgendamento();
-        LocalDateTime horaFim = agendamento.getDataHoraAgendamento().plusHours(1); // 1 em 1 hora
+        LocalDateTime horaFim = agendamento.getDataHoraAgendamento().plusMinutes(1);
 
-        AgendamentoEntity servicosAgendados = agendamentoRepository.findByServicoAndDataHoraAgendamentoBetween(agendamento.getServico(), horaAgendamento, horaFim);
+        AgendamentoEntity agendados = agendamentoRepository.findByServicoAndDataHoraAgendamentoBetween(agendamento.getServico(),
+                horaAgendamento, horaFim);
 
-        if(Objects.isNull(servicosAgendados)) {
-            return agendamentoRepository.save(agendamento);
-        } else {
-           throw new RuntimeException("O horário já está preenchido!");
+
+        if(Objects.nonNull(agendados)){
+            throw new RuntimeException("Horário já está preenchido");
         }
+        return agendamentoRepository.save(agendamento);
     }
 
-    public void deletarAgendamento(LocalDateTime dataHoraAgendamento, String cliente) {
+    @Transactional
+    public void deletarAgendamento(LocalDateTime dataHoraAgendamento, String cliente){
         agendamentoRepository.deleteByDataHoraAgendamentoAndCliente(dataHoraAgendamento, cliente);
     }
 
-    public AgendamentoEntity buscarAgendamentosDoDia(LocalDate data) {
-        LocalDateTime primeiraHora = data.atStartOfDay();
+    public List<AgendamentoEntity> buscarAgendamentosDia(LocalDate data){
+        LocalDateTime primeiraHoraDia = data.atStartOfDay();
         LocalDateTime horaFinalDia = data.atTime(23, 59, 59);
 
-        return agendamentoRepository.findByDataHoraAgendamentoBetween(primeiraHora, horaFinalDia);
+        return agendamentoRepository.findByDataHoraAgendamentoBetween(primeiraHoraDia, horaFinalDia);
     }
 
-    public AgendamentoEntity alterarAgendamento(AgendamentoEntity agendamento, String cliente, LocalDateTime dataHoraAgendamento) {
+    public AgendamentoEntity alterarAgendamento(AgendamentoEntity agendamento, String cliente, LocalDateTime dataHoraAgendamento){
         AgendamentoEntity agenda = agendamentoRepository.findByDataHoraAgendamentoAndCliente(dataHoraAgendamento, cliente);
 
-        if(Objects.isNull(agenda)) {
-            throw new RuntimeException("Horário não está preenchido!");
+        if(Objects.isNull(agenda)){
+            throw new RuntimeException("Horário não está preenchido");
         }
-        agendamento.setId(agenda.getId());
-        return agendamentoRepository.save(agendamento);
+
+        agenda.setDataHoraAgendamento(agendamento.getDataHoraAgendamento());
+
+        return agendamentoRepository.save(agenda);
     }
 }
