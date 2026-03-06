@@ -1,4 +1,4 @@
-package com.lily.agendadorHorarios.Infrastructure.Entity.Agendamento;
+package com.lily.agendadorHorarios.Infrastructure.Entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 @Table(name = "agendamento")
 public class AgendamentoEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String servico;
     private LocalDateTime dataHoraAgendamento;
@@ -27,5 +27,7 @@ public class AgendamentoEntity {
 
     // Data no BD
     private LocalDateTime dataInsercao = LocalDateTime.now();
+
+
 }
 
