@@ -44,6 +44,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    // Criptografia para controller de enconding de senha
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
