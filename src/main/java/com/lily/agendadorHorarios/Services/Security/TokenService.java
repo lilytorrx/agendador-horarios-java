@@ -38,7 +38,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
 
-
+            // Validação do token
             return JWT.require(algorithm)
                     .withIssuer("agendadorHorarios")
                     .build()
@@ -50,6 +50,7 @@ public class TokenService {
     }
 
     private Instant generateTokenExpirationDate() {
+        // Gera data de expiração após 2 horas de autenticação
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-3"));
     }
 }
