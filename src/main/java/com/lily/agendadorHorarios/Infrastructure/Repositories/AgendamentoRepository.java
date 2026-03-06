@@ -1,7 +1,6 @@
 package com.lily.agendadorHorarios.Infrastructure.Repositories;
 
-import com.lily.agendadorHorarios.Infrastructure.Entity.AgendamentoEntity;
-import jakarta.transaction.Transactional;
+import com.lily.agendadorHorarios.Infrastructure.Entity.Agendamento.AgendamentoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
