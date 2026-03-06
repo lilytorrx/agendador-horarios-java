@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @GetMapping
     public ResponseEntity<String> getUser() {
+        System.out.println("CHEGOU NO /user");
         return ResponseEntity.ok("Sucesso!");
     }
 }

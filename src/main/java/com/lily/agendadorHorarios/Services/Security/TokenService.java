@@ -25,7 +25,7 @@ public class TokenService {
 
             String token = JWT.create().
                     withIssuer("agendadorHorarios")
-                    .withSubject(user.getId())
+                    .withSubject(user.getEmail())
                     .withExpiresAt(this.generateTokenExpirationDate())
                     .sign(algorithm);
             return token;
