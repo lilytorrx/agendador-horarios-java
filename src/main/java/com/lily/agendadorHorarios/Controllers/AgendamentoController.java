@@ -1,7 +1,7 @@
 package com.lily.agendadorHorarios.Controllers;
 
-import com.lily.agendadorHorarios.Infrastructure.Entity.AgendamentoEntity;
-import com.lily.agendadorHorarios.Services.AgendamentoService;
+import com.lily.agendadorHorarios.Infrastructure.Entity.Agendamento.AgendamentoEntity;
+import com.lily.agendadorHorarios.Services.Agendamento.AgendamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
-package com.lily.agendadorHorarios.Services;
+package com.lily.agendadorHorarios.Services.Agendamento;
 
-import com.lily.agendadorHorarios.Infrastructure.Entity.AgendamentoEntity;
+import com.lily.agendadorHorarios.Infrastructure.Entity.Agendamento.AgendamentoEntity;
 import com.lily.agendadorHorarios.Infrastructure.Repositories.AgendamentoRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
