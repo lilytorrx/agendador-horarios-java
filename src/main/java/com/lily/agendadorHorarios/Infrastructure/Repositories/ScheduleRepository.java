@@ -22,6 +22,7 @@ public interface ScheduleRepository extends JpaRepository<ScheduleEntity, Long> 
 
     List<ScheduleEntity> findByUserAndStatus(UserEntity user, ScheduleStatus status);
 
+    List<ScheduleEntity> findByProfessionalServiceProfessionalAndStatusAndDateTimeScheduleBetween(ProfessionalEntity professional, ScheduleStatus status, LocalDateTime start, LocalDateTime end);
 
     // Alterar status de agendamento para concluído quando passar uma hora
     @Modifying
