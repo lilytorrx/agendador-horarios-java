@@ -1,7 +1,7 @@
 package com.lily.agendadorHorarios.Controllers;
 
-import com.lily.agendadorHorarios.Infrastructure.Entity.Agendamento.AgendamentoEntity;
-import com.lily.agendadorHorarios.Services.Agendamento.AgendamentoService;
+import com.lily.agendadorHorarios.Infrastructure.Entity.Schedule.ScheduleEntity;
+import com.lily.agendadorHorarios.Services.Schedule.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,31 +14,31 @@ import java.util.List;
 @RequestMapping("/agendamentos")
 @RequiredArgsConstructor
 public class AgendamentoController {
-    private final AgendamentoService agendamentoService;
+    private final ScheduleService scheduleService;
 
     @PostMapping
-    public ResponseEntity<AgendamentoEntity> salvarAgendamento(@RequestBody AgendamentoEntity agendamento) {
-        return ResponseEntity.accepted().body(agendamentoService.salvarAgendamento(agendamento));
+    public ResponseEntity<ScheduleEntity> salvarAgendamento(@RequestBody ScheduleEntity agendamento) {
+        return ResponseEntity.accepted().body(scheduleService.salvarAgendamento(agendamento));
     }
 
     @DeleteMapping
     public ResponseEntity<Void> deletarAgendamento(@RequestParam String cliente,
                                                    @RequestParam LocalDateTime dataHoraAgendamento) {
 
-        agendamentoService.deletarAgendamento(dataHoraAgendamento, cliente);
+        scheduleService.deletarAgendamento(dataHoraAgendamento, cliente);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<AgendamentoEntity>> buscarAgendamentosDia(@RequestParam LocalDate data) {
-        return ResponseEntity.ok().body(agendamentoService.buscarAgendamentosDia(data));
+    public ResponseEntity<List<ScheduleEntity>> buscarAgendamentosDia(@RequestParam LocalDate data) {
+        return ResponseEntity.ok().body(scheduleService.buscarAgendamentosDia(data));
     }
 
     @PutMapping
-    public ResponseEntity<AgendamentoEntity> alterarAgendamentos(@RequestBody AgendamentoEntity agendamento,
-                                                           @RequestParam String cliente,
-                                                           @RequestParam LocalDateTime dataHoraAgendamento) {
-        return ResponseEntity.accepted().body(agendamentoService.alterarAgendamento(agendamento,
+    public ResponseEntity<ScheduleEntity> alterarAgendamentos(@RequestBody ScheduleEntity agendamento,
+                                                              @RequestParam String cliente,
+                                                              @RequestParam LocalDateTime dataHoraAgendamento) {
+        return ResponseEntity.accepted().body(scheduleService.alterarAgendamento(agendamento,
                 cliente, dataHoraAgendamento));
     }
 
