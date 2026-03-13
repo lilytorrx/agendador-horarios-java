@@ -1,7 +1,10 @@
 package com.lily.agendadorHorarios.Infrastructure.Entity.Professional;
 
+import com.lily.agendadorHorarios.Infrastructure.Entity.ProfessionalService.ProfessionalServiceEntity;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter

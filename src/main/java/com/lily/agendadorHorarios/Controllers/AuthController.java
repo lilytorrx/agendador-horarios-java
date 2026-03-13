@@ -1,8 +1,8 @@
 package com.lily.agendadorHorarios.Controllers;
 
-import com.lily.agendadorHorarios.DTOs.LoginRequestDTO;
-import com.lily.agendadorHorarios.DTOs.RegisterRequestDTO;
-import com.lily.agendadorHorarios.DTOs.ResponseDTO;
+import com.lily.agendadorHorarios.DTOs.Auth.LoginRequestDTO;
+import com.lily.agendadorHorarios.DTOs.Auth.RegisterRequestDTO;
+import com.lily.agendadorHorarios.DTOs.Auth.ResponseDTO;
 import com.lily.agendadorHorarios.Infrastructure.Entity.User.UserEntity;
 import com.lily.agendadorHorarios.Infrastructure.Repositories.UserRepository;
 import com.lily.agendadorHorarios.Services.Security.TokenService;

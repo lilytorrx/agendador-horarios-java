@@ -1,4 +1,4 @@
-package com.lily.agendadorHorarios.DTOs;
+package com.lily.agendadorHorarios.DTOs.Auth;
 
 public record LoginRequestDTO(String email, String password) {
 }

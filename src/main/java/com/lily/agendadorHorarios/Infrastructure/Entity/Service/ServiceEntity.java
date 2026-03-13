@@ -1,5 +1,6 @@
 package com.lily.agendadorHorarios.Infrastructure.Entity.Service;
 
+import com.lily.agendadorHorarios.Infrastructure.Entity.ProfessionalService.ProfessionalServiceEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,8 @@ public class ServiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Integer duration;
 
     private String serviceName;
 
