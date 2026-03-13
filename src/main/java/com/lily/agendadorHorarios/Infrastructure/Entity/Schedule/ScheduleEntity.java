@@ -1,5 +1,6 @@
 package com.lily.agendadorHorarios.Infrastructure.Entity.Schedule;
 
+import com.lily.agendadorHorarios.Infrastructure.Entity.ProfessionalService.ProfessionalServiceEntity;
 import com.lily.agendadorHorarios.Infrastructure.Entity.User.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

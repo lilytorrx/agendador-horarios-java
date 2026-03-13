@@ -1,8 +1,9 @@
 package com.lily.agendadorHorarios.Infrastructure.Entity.Service;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -11,5 +12,12 @@ import lombok.*;
 @Entity
 @Table(name = "services")
 public class ServiceEntity {
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String serviceName;
+
+    @ManyToMany(mappedBy = "service", cascade = CascadeType.ALL)
+    private List<ProfessionalServiceEntity> professionalServices;
 }
